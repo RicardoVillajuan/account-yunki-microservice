@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.bank.entity.Yunki;
 import com.bank.service.IYunkiService;
+import com.bank.servicedb.YunkiServicedb;
 
 import lombok.Delegate;
 import lombok.RequiredArgsConstructor;
@@ -21,11 +22,16 @@ import reactor.core.publisher.Mono;
 @RequestMapping("/accountyunki")
 public class YunkiController {
 
-	private final IYunkiService serviceYunki;
+	private final YunkiServicedb serviceYunki;
 	
 	@PostMapping
 	public Mono<Yunki> save(@RequestBody Yunki yunki){
 		return serviceYunki.create(yunki);
+	}
+	
+	@PostMapping("/probando/{yunki}")
+	public void saveprueba (@PathVariable String yunki){
+		serviceYunki.createssss(yunki);
 	}
 	
 	@PutMapping("/{idyunki}")

@@ -60,7 +60,13 @@ public class YunkiServicedb implements IYunkiService{
 	
 	@KafkaListener(topics = "yunki")
     public void consumeMessage(String ddd){
-        System.out.println("consumidor _ :"+ddd);
+        System.out.println("consumidor Yunki :"+ddd);
+        //createssss(ddd);
+       //kafkaTemplate.send("yunkisubmit", "Enviado desde el account");
+    }
+	
+	public void createssss(String yunki){
         
+       kafkaTemplate.send("yunkisubmit", "Enviado");
     }
 }
