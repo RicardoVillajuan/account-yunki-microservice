@@ -20,4 +20,6 @@ public class Yunki {
 	private String email;
 	private Double balance;
 	private String idaccount;
+	
+	
 }

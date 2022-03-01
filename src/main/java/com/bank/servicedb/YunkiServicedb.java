@@ -1,5 +1,9 @@
 package com.bank.servicedb;
 
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
 import com.bank.entity.Yunki;
@@ -15,6 +19,9 @@ import reactor.core.publisher.Mono;
 public class YunkiServicedb implements IYunkiService{
 
 	private final YunkiRepository repoYunki;
+	
+	@Autowired
+	KafkaTemplate<String, String> kafkaTemplate;
 	
 	@Override
 	public Mono<Yunki> create(Yunki yunki) {
@@ -50,4 +57,10 @@ public class YunkiServicedb implements IYunkiService{
 		return repoYunki.findById(idyunki);
 	}
 
+	
+	@KafkaListener(topics = "yunki")
+    public void consumeMessage(String ddd){
+        System.out.println("consumidor _ :"+ddd);
+        
+    }
 }
