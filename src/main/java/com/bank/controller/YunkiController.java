@@ -29,10 +29,10 @@ public class YunkiController {
 		return serviceYunki.create(yunki);
 	}
 	
-	@PostMapping("/probando/{yunki}")
+	/*@PostMapping("/probando/{yunki}")
 	public void saveprueba (@PathVariable String yunki){
 		serviceYunki.createssss(yunki);
-	}
+	}*/
 	
 	@PutMapping("/{idyunki}")
 	public Mono<Yunki> update(@RequestBody Yunki yunki,@PathVariable String idyunki){
